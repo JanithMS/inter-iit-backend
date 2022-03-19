@@ -31,8 +31,8 @@ def search_companies(company_name):
     conn = connect()
     try:
         cur = conn.cursor()
-        cur.execute(
-            "SELECT * FROM companies WHERE company_name ILIKE %s", (company_name,))
+        querystr = "SELECT * FROM companies WHERE company_name ILIKE '%" + company_name + "%'"
+        cur.execute(querystr)
         row = cur.fetchall()
 
         cur.close()
